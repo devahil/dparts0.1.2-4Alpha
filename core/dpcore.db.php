@@ -43,7 +43,7 @@ class coredb {
     public function todo($sql) {
         mysql_query($sql, $this->connect());
     }
-    
+
     /**
      * MySQL simple query, this statement returns a single value that is accessed from the database, this is depending on 
      * the SQL syntax to pass as a parameter
@@ -71,7 +71,7 @@ class coredb {
     public function extract_array($sql) {
         return mysql_fetch_array($this->query($sql));
     }
-    
+
     /**
      * MySQL simple query that extracts the attributes (fields) of an entity (table)
      * @param string $entity
@@ -79,6 +79,28 @@ class coredb {
      */
     public function extract_fields($entity) {
         return mysql_fetch_array($this->query("SHOW COLUMNS FROM $entity"));
+    }
+
+    /**
+     * Validation Function mere existence of data. This validation is directly dependent on the input parameters entity, 
+     * attribute, and data. Returns in any case an integer value where:
+     * 0 => is non-existent
+     * 1 => existing
+     * 
+     * @param string $entity
+     * @param string $attribute
+     * @param string $data
+     * @return int as Boolean 
+     */
+    public function validate_data($entity, $attribute, $data) {
+
+        $validar = mysql_result($this->query("SELECT $attribute FROM $entity WHERE $attribute = '$data' "), 0);
+
+        if ($validar != NULL) {
+            return "1";
+        } else {
+            return "0";
+        }
     }
 
 }
