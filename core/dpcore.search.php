@@ -26,8 +26,9 @@ class coresearch {
      * @return array 
      */
     public function find_anything_inplace($entity, $data) {
-        $result = $this->query("SHOW COLUMNS FROM $entity");
-        while ($array_datos = mysql_fetch_array($result)) {
+        $data = new coredb();
+        $result = $data->query("SHOW COLUMNS FROM $entity");
+        while ($array_datos = @mysql_fetch_array($result)) {
             $check = @mysql_fetch_row($this->query("SELECT $array_datos[0] FROM $entity WHERE $array_datos[0] lIKE '$data'"));
             if ($check != NULL) {
                 return $array_datos[0];
@@ -50,7 +51,7 @@ class coresearch {
      * @return array 
      */
     public function d_search($keywords, $delimiter, $entity, $atribute) {
-        $data = new dwaf_mysql();
+        $data = new coredb();
         $i = 0;
         $terms = explode($delimiter, $keywords);
         foreach ($terms as $each) {
@@ -62,9 +63,9 @@ class coresearch {
             }
         }
         $query = $data->query($core_search);
-        $numrows = mysql_numrows($query);
+        $numrows = @mysql_numrows($query);
         if ($numrows > 0) {
-            return $row = mysql_fetch_assoc($query);
+            return $row = @mysql_fetch_assoc($query);
         } else {
             return "0";
         }
