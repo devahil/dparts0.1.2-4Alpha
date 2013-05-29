@@ -11,7 +11,7 @@
  * Interface that enables all the libraries into any project
  */
 require_once 'dpcore.db.php';
-
-
+require_once 'dpcore.search.php';
+require_once 'dpcore.log.php';
 
 ?>
