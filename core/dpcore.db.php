@@ -24,7 +24,7 @@ class coredb {
         mysql_select_db($config->database, $con);
         return $con;
     }
-
+ 
     /**
      * MySQL simple query, this is the basic instruction for the entire structure of the advanced functions
      * @param string $sql
@@ -101,6 +101,35 @@ class coredb {
         } else {
             return "0";
         }
+    }
+    
+        
+     /**
+     * A feature that helps to create a database from scratch
+     * @param string $host
+     * @param string $user
+     * @param string $pass
+     * @param string $db 
+     */
+    public function create_db_from_scratch($host, $user, $pass, $db) {
+        $this->query("CREATE DATABASE $db DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;", $this->connect($host, $user, $pass));
+    }
+    
+    /**
+     * Function that creates the user to a database, whereas user Tuen all privileges for mysql
+     * Where sudo corresponds to your password of root user of database server
+     * @param string $host
+     * @param string $user
+     * @param string $pass
+     * @param string $db
+     * @param string $sudo 
+     */
+    public function create_user_from_scratch($host, $user, $pass, $db, $sudo) {
+        $c = $this->connect($host, "root", $sudo);
+        $query = "CREATE USER $user@localhost IDENTIFIED BY '$pass'";
+        @mysql_query($query, $c);
+        $query2 = "GRANT ALL PRIVILEGES ON $db . * TO $user@localhost WITH GRANT OPTION";
+        @mysql_query($query2, $c);
     }
 
 }
