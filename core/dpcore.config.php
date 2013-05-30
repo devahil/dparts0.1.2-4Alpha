@@ -32,7 +32,13 @@ class coreconfig {
     public $logo = "../shared/images/logo.png"; //Just an example
     public $host = ""; // IP or Domain for AJAX or another things to use
     public $templates = "../templates";
-
+    
+    /**
+     * Crypt Config
+     */
+    public $key = "";//Secret passphrase used to encrypt your data
+    public $cipher = "MCRYPT_SERPENT_256"; //Do not change, only if you want another method.
+    public $mode = "MCRYPT_MODE_CBC"; //Do not change, only if you want another method.
 }
 
 ?>

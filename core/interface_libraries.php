@@ -13,5 +13,7 @@
 require_once 'dpcore.db.php';
 require_once 'dpcore.search.php';
 require_once 'dpcore.log.php';
+require_once 'dpcore.messagesubsystem.php';
+require_once 'dpcore.crypt.php';
 
 ?>
