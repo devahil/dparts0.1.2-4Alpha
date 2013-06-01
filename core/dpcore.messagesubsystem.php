@@ -41,7 +41,7 @@ class coremessage {
     public function send_users_message($source, $destiny, $subject, $message) {
         $data = new coredb();
         $status = "1";
-        $data->todo("INSERT INTO sysmail (source, subject, message, date, hour) VALUES ('$origen', '$asunto', '$mensaje', CURDATE(), CURTIME())");
+        $data->todo("INSERT INTO sysmail (source, subject, message, date, hour) VALUES ('$source', '$subject', '$message', CURDATE(), CURTIME())");
         $id_mail = $data->extract_data("SELECT id_mail FROM sysmail WHERE source = '$source' AND subject = '$subject' AND message LIKE '$message'");
         $data->todo("INSERT INTO indexmail (id_mail, destiny, status) VALUES ('$id_mail', '$destiny', '$status')");
     }
@@ -59,11 +59,11 @@ class coremessage {
     /**
      * Function to create messages from the system, depending on the events of the same. 
      * We need as parameters the system message, the target (tray) and the title of the message.
-     * @param string $target
+     * @param string $destiny
      * @param string $title
      * @param string $idmessage 
      */
-    public function send_system_message($target, $title, $idmessage){
+    public function send_system_message($destiny, $title, $idmessage){
         $data = new coredb();
         $sysm = new corelog();
         $status = "1";
@@ -77,11 +77,11 @@ class coremessage {
     /**
      * Function to create messages from the system, depending on the events of the same. 
      * We need as parameters the system message, the target (tray) and the title of the message.
-     * @param string $target
+     * @param string $destiny
      * @param string $title
      * @param string $log 
      */
-    public function send_system_log($target, $title, $log){
+    public function send_system_log($destiny, $title, $log){
         $data = new coredb();
         $status = "1";
         $source = "SYSTEM";
