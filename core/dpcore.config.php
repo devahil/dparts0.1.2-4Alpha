@@ -32,6 +32,7 @@ class coreconfig {
     public $logo = "../shared/images/logo.png"; //Just an example
     public $host = ""; // IP or Domain for AJAX or another things to use
     public $templates = "../templates";
+    public $mailadmin = "";//A mail address to systemadmin
     
     /**
      * Crypt Config
