@@ -16,6 +16,9 @@ require_once 'dpcore.log.php';
 require_once 'dpcore.messagesubsystem.php';
 require_once 'dpcore.crypt.php';
 require_once 'dpcore.errorhandler.php';
+require_once 'dpcore.observer.php';
+require_once 'dpcore.observable.php';
+require_once 'dpcore.logobserver.php';
 
 
 ?>

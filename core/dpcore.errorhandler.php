@@ -28,7 +28,7 @@ require_once 'dpcore.config.php';
 
 class coreErrorHandler {
 
-    protected $_noticeLog = '/tmp/notice.log';
+    protected $_noticeLog = '../tmp/notice.log';
     public $message = '';
     public $filename = '';
     public $line = 0;
