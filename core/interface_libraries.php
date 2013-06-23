@@ -19,6 +19,8 @@ require_once 'dpcore.errorhandler.php';
 require_once 'dpcore.observer.php';
 require_once 'dpcore.observable.php';
 require_once 'dpcore.logobserver.php';
+require_once 'dpcore.exceptionhandler.php';
+require_once 'dpcore.errortoexception.php';
 
 
 ?>
