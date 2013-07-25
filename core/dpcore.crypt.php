@@ -8,7 +8,7 @@
  * 	
  */
 /**
- * In general this class contains all the logic for security ations establacer and protection of your information. 
+ * In general this class contains all the logic for security actions and protection of your information. 
  * From encrypt data passed as a parameter to generate hash and / or passwords for use in the core of the application
  * 
  * Use a functions that allows encryption of the information to be passed to a database via MCrypt.

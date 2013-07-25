@@ -8,7 +8,7 @@
  * 	
  */
 /**
- * Class that implements the mail subsystem and system trays messaging user or between users, this class can 
+ * Class that implements the message subsystem and system trays messaging user or between users, this class can 
  * somehow extend or operate in parallel with the class or syslogs sysmessages. 
  * 
  * To identify a mail always use $id_mail table involves reading the mails and mails index table. 
