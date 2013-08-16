@@ -2,7 +2,7 @@
 
 require_once '../core/interface_libraries.php';
 
-echo "<h2>Show te config vars</h2>";
+echo "<h2>Show the config vars</h2>";
 
 $conf = new coreconfig();
 
