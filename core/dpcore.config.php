@@ -36,10 +36,14 @@ class coreconfig {
     
     /**
      * Crypt Config
+     * Change all the parameters as you need.
+     * 
+     * In the mayor of cases the path of MCRYPT ALGORITHMS and MODES is /usr/local/bin/mcrypt, please
+     * consult all the documentation for the topic.
      */
     public $key = "";//Secret passphrase used to encrypt your data
-    public $cipher = "MCRYPT_SERPENT_256"; //Do not change, only if you want another method.
-    public $mode = "MCRYPT_MODE_CBC"; //Do not change, only if you want another method.
+    public $path_algorithms = "/usr/lib64/libmcrypt";
+    public $path_modes = "/usr/lib64/libmcrypt";
 }
 
 ?>
