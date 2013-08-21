@@ -18,34 +18,56 @@ require_once 'dpcore.config.php';
 
 class corecrypt {
 
+    public function safe_b64encode($string) {
+
+        $data = base64_encode($string);
+        $data = str_replace(array('+','/','='),array('-','_',''),$data);
+        return $data;
+    }
+
+    public function safe_b64decode($string) {
+        $data = str_replace(array('-','_'),array('+','/'),$string);
+        $mod4 = strlen($data) % 4;
+        if ($mod4) {
+            $data .= substr('====', $mod4);
+        }
+        return base64_decode($data);
+    }
+
     /**
-     * Function to encrypt data passed as parameter in the variable $data
-     * @param string $data
-     * @return string in cipher mode 
+     * Function to encrypt data passed as parameter in the $data variable
+     * @param string $value
+     * @return boolean
      */
-    public function encrypt($data) {
+    public function encrypt($value){
         $cy = new coreconfig();
-        return(string)
-                base64_encode(
-                        mcrypt_encrypt(
-                                $cy->cipher, substr(md5($cy->key), 0, mcrypt_get_key_size($cy->cipher, $cy->mode)), $data, $cy->mode, substr(md5($cy->key), 0, mcrypt_get_block_size($cy->cipher, $cy->mode))
-                        )
-        );
+        if(!$value){
+            return false;
+        }
+        $text = $value;
+        $iv_size = mcrypt_get_iv_size(MCRYPT_SERPENT, MCRYPT_MODE_CBC);
+        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+        $crypttext = mcrypt_encrypt(MCRYPT_SERPENT, $cy->key, $text, MCRYPT_MODE_CBC, $iv);
+        return trim($this->safe_b64encode($crypttext));
     }
 
     /**
-     * Function to decrypt data passed as parameter in the variable $data
-     * @param string $data
-     * @return string in normal mode 
+     * Function to decrypt data passed as parameter in the $data variable
+     * @param string $value
+     * @return boolean
      */
-    public function decrypt($data) {
-        $cyd = new coreconfig();
-        return(string)
-                mcrypt_decrypt(
-                        $cid->cipher, substr(md5($cid->key), 0, mcrypt_get_key_size($cyd->cipher, $cyd->mode)), base64_decode($data), $cyd->mode, substr(md5($cyd->key), 0, mcrypt_get_block_size($cyd->cipher, $cyd->mode))
-        );
+    public function decrypt($value){
+        $cy = new coreconfig();
+        if(!$value){
+            return false;
+        }
+        $crypttext = $this->safe_b64decode($value);
+        $iv_size = mcrypt_get_iv_size(MCRYPT_SERPENT, MCRYPT_MODE_CBC);
+        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+        $decrypttext = mcrypt_decrypt(MCRYPT_SERPENT, $cy->key, $crypttext, MCRYPT_MODE_CBC, $iv);
+        return trim($decrypttext);
     }
-
+    
     /**
      * Function that will help you generate random password mode for use in core applications.
      * This only requires as a parameter the length in characters of the password. 
@@ -63,6 +85,24 @@ class corecrypt {
             }
             return $password;
         }
+    }
+    
+    /**
+     * Function that returns a list of Algorithms supported by your server
+     * @return array
+     */
+    public function get_algorithms(){
+        $cnf = new coreconfig();
+        return $algorithms = mcrypt_list_algorithms($cnf->path_algorithms);
+    }
+    
+    /**
+     * Function that returns a list of Modes supported by your server
+     * @return array
+     */
+    public function get_modes(){
+        $cnf = new coreconfig();
+        return $modes = mcrypt_list_modes($cnf->path_modes);
     }
 
 }
