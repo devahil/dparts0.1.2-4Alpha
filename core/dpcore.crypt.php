@@ -45,14 +45,12 @@ class corecrypt {
             return false;
         }
         $text = $value;
-        $iv_size = mcrypt_get_iv_size(MCRYPT_SERPENT, MCRYPT_MODE_CBC);
-        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-        $crypttext = mcrypt_encrypt(MCRYPT_SERPENT, $cy->key, $text, MCRYPT_MODE_CBC, $iv);
+        $crypttext = mcrypt_encrypt(MCRYPT_SERPENT, $cy->key, $text, MCRYPT_MODE_CBC, $cy->iv);
         return trim($this->safe_b64encode($crypttext));
     }
 
     /**
-     * Function to decrypt data passed as parameter in the $data variable
+     * Function to dencrypt data passed as parameter in the $data variable
      * @param string $value
      * @return boolean
      */
@@ -62,9 +60,7 @@ class corecrypt {
             return false;
         }
         $crypttext = $this->safe_b64decode($value);
-        $iv_size = mcrypt_get_iv_size(MCRYPT_SERPENT, MCRYPT_MODE_CBC);
-        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-        $decrypttext = mcrypt_decrypt(MCRYPT_SERPENT, $cy->key, $crypttext, MCRYPT_MODE_CBC, $iv);
+        $decrypttext = mcrypt_decrypt(MCRYPT_SERPENT, $cy->key, $crypttext, MCRYPT_MODE_CBC, $cy->iv);
         return trim($decrypttext);
     }
     
