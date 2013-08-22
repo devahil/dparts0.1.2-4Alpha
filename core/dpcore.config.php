@@ -44,6 +44,7 @@ class coreconfig {
     public $key = "";//Secret passphrase used to encrypt your data
     public $path_algorithms = "/usr/lib64/libmcrypt";
     public $path_modes = "/usr/lib64/libmcrypt";
+    public $iv = ""// The second pass for encrypt or decrypt
 }
 
 ?>
