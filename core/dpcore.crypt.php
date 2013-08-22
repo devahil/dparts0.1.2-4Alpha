@@ -50,7 +50,7 @@ class corecrypt {
     }
 
     /**
-     * Function to dencrypt data passed as parameter in the $data variable
+     * Function to decrypt data passed as parameter in the $data variable
      * @param string $value
      * @return boolean
      */
