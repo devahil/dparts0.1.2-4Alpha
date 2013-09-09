@@ -33,6 +33,7 @@ class coreconfig {
     public $host = ""; // IP or Domain for AJAX or another things to use
     public $templates = "../templates";
     public $mailadmin = "";//A mail address to systemadmin
+    public $applibs = "";//A special variable where you put the personal app libs
     
     /**
      * Crypt Config
