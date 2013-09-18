@@ -46,6 +46,15 @@ class coreconfig {
     public $path_algorithms = "/usr/lib64/libmcrypt";
     public $path_modes = "/usr/lib64/libmcrypt";
     public $iv = "";// The second pass for encrypt or decrypt
+
+    /**
+     * Session Conrol Config
+     * Change all the parameters as you need.
+     *
+     * These variables are substantial for the new access control integrated into the framework
+     */
+    public $table_users = "usuarios";// the table on database tha provides all the users on the app
+    public $app_session="autentificator"; // The name of the session var for all the app
 }
 
 ?>

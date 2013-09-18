@@ -58,6 +58,9 @@ class corelog {
             case "6":
                 return "ERROR 6 DUPLICATE DATA!";
                 break;
+            case "7";
+                return "ERROR CODE: 2, INCORRECT ACCESS!";
+                break;
         }
     }
     
