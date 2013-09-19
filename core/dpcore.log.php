@@ -61,6 +61,14 @@ class corelog {
             case "7";
                 return "ERROR CODE: 2, INCORRECT ACCESS!";
                 break;
+            case "8":
+                return "A PROBLEM OCCURRED WHEN TRYING TO UPLOAD FILE";
+                break;
+            case "9":
+                return "THE FILE SIZE EXCEED THE PERMITED LIMIT";
+                break;
+            case "10":
+                return "THE FILE TYPE IS NOT PERMITED";
         }
     }
     

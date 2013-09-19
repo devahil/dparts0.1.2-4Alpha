@@ -55,6 +55,15 @@ class coreconfig {
      */
     public $table_users = "usuarios";// the table on database tha provides all the users on the app
     public $app_session="autentificator"; // The name of the session var for all the app
+
+    /**
+     * Filesystem config segment
+     */
+    public $upload_max_filesize = "";
+    public $memory_limit = "";
+    public $max_execution_time = "";
+    public $post_max_size = "";
+    public $max_input_time = "";
 }
 
 ?>
