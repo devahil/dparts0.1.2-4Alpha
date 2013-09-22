@@ -25,7 +25,7 @@ class corexmlserializer{
      * @param <type> $ID
      * @return <bool>
      */
-    private function xml_create($array, $ID){
+    public function xml_create($array, $ID){
 
         if (is_array($array)) {
             $keys = array_keys($array);
@@ -63,7 +63,7 @@ class corexmlserializer{
      * @param <type> $string
      * @return <bool>
      */
-    private function checkForHTML($string){
+    public function checkForHTML($string){
 
         if (strlen($string) !== strlen(strip_tags($string))) {
             return true;
