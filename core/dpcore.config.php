@@ -48,7 +48,7 @@ class coreconfig {
     public $iv = "";// The second pass for encrypt or decrypt
 
     /**
-     * Session Conrol Config
+     * Session Control Config
      * Change all the parameters as you need.
      *
      * These variables are substantial for the new access control integrated into the framework

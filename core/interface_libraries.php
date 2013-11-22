@@ -21,11 +21,15 @@ require_once 'dpcore.db.php';
 require_once 'dpcore.errorhandler.php';
 require_once 'dpcore.errortoexception.php';
 require_once 'dpcore.exceptionhandler.php';
+require_once 'dpcore.file.php';
+require_once 'dpcore.helpers.php';
 require_once 'dpcore.log.php';
 require_once 'dpcore.logobserver.php';
 require_once 'dpcore.messagesubsystem.php';
 require_once 'dpcore.observable.php';
 require_once 'dpcore.observer.php';
 require_once 'dpcore.search.php';
+require_once 'dpcore.sessioncontrol.php';
+require_once 'dpcore.xmlserializer.php';
 
 ?>
