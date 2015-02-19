@@ -31,5 +31,5 @@ require_once 'dpcore.observer.php';
 require_once 'dpcore.search.php';
 require_once 'dpcore.sessioncontrol.php';
 require_once 'dpcore.xmlserializer.php';
-
+require_once 'dpcore.security.php'
 ?>
