@@ -1,8 +1,8 @@
 <?php
 /**
-  Script inical que recibe una petición de servicios que un script t4 va a consumir
-  como cliente del mismo, ara esto se setea un servidor que monta el core del parse
-  de dicho set de servicios pequeños a revisar
+  *Script inical que recibe una petición de servicios que un script t4 va a consumir
+  *como cliente del mismo, ara esto se setea un servidor que monta el core del parse
+  *de dicho set de servicios pequeños a revisar
 */
 	require_once "../shared/nusoap/nusoap.php";
 

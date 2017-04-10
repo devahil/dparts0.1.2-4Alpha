@@ -1,7 +1,7 @@
 <?php
 /**
-  Este es el cliente de t3.php que es el server que administra el flujo para el consumo
-  de las solicitudes de servicios
+  *Este es el cliente de t3.php que es el server que administra el flujo para el consumo
+  *de las solicitudes de servicios
 */
 	require_once "../shared/nusoap/nusoap.php";
 	$cliente = new nusoap_client("./t3.php");
